@@ -1,46 +1,102 @@
-# Getting Started with Create React App
+Introdução
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Por favor, leia este documento do começo ao fim, com muita atenção. O intuito deste teste é avaliar seus conhecimentos técnicos com o front-end.
 
-## Available Scripts
+Instruções de entrega do desafio
+Primeiro, crie um repositório público no Github;
+Em seguida, implemente o projeto tal qual descrito abaixo, em seu clone local;
+Faça o push do seu projeto local para um repositório público no Github;
+Por fim, envie no canvas o link do repositório.
+Objetivo
+O objetivo do desafio é validar seus conhecimentos nos seguintes tópicos:
 
-In the project directory, you can run:
+JavaScript: aproveite o desafio para mostrar tudo o que sabe sobre as novas features da linguagem.
+React: siga boas práticas e mantenha o código idiomático. Busque utilizar features recentes e se mantenha atento a problemas comuns como re-renders desnecessários.
+EXTRA - TypeScript: caso opte por usá-lo, mostre todo o seu domínio.
+Componentização
+CSS: vanilla
+EXTRA - Sass ou Scss: pré-processadores.
+EXTRA - Testes unitários: 
+EXTRA - Testes end-to-end: caso opte por usá-lo, mostre todo o seu domínio.
+Analisaremos seu teste com base nos critérios acima, então dê um show para ficarmos impressionados.
 
-### `yarn start`
+Restrições
+Não é permitido: utilizar frameworks e/ou bibliotecas de UI que não seja o React (como Vue.js ou Angular).
+São permitidas: ferramentas modernas de desenvolvimento como TypeScript, Babel, eslint, webpack, assim como o uso de polyfills (e outras ferramentas para melhorar o suporte a browsers, como Modernizr) e/ou bibliotecas para testes.
+São permitidos: São permitidos pré-processadores de CSS e/ou ferramentas CSS-in-JS.
+Não é uma regra, mas evite usar lodash, underscore, ramda e similares.
+Sobre o desafio
+Hoje nossos clientes precisam saber quanto custa antecipar uma transação, e para isso, precisamos desenvolver uma calculadora de antecipação para que os mesmos consigam saber quais valores receberão caso optem por antecipar o recebimento.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Você deverá desenvolver o teste seguindo os requisitos abaixo.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Requisitos
+Use componentização.
+Os períodos de recebimento devem ser configuráveis já que a API pode receber uma lista de periódos para realizar os cálculos.
+Extra
+Lembrando que extra não é obrigatório, mas seria um diferencial a implementação.
 
-### `yarn test`
+Faça testes unitários e/ou de ponta-a-ponta (end-to-end)
+Os possíveis cenários devem ser cobertos e terem soluções implementadas. Não foi desenvolvido layout para isso, pois queremos observar como você lidará com eles:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Demora de respostas da API
+Timeout da API
+Conexão lenta
+Usuário estar offline
+Front
+O layout proposto para essa calculadora pode ser visto na imagem abaixo.
 
-### `yarn build`
+Layout Calculadora
+Layout Calculadora
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+API
+Você consumirá uma API já existente no endereço abaixo. Em seguida há uma especificação simplificada dela.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+https://frontend-challenge-7bu3nxh76a-uc.a.run.app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Post
+Layout Calculadora
+Layout Calculadora
 
-### `yarn eject`
+Exemplo
+ $ curl --request POST \
+        --url https://frontend-challenge-7bu3nxh76a-uc.a.run.app \
+        --header 'content-type: application/json' \
+        --data '{"amount": 15000,
+        "installments": 3,
+        "mdr": 4
+      }'
+      
+      {"1":13267,"15":13536,"30":13824,"90":14400}
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Exemplo informando períodos
+ $ curl --request POST \
+        --url https://frontend-challenge-7bu3nxh76a-uc.a.run.app \
+        --header 'content-type: application/json' \
+        --data '{"amount": 15000,
+        "installments": 3,
+        "mdr": 4,
+        "days": [30, 60, 90]
+      }'
+      
+      {"30":13824,"60":14208,"90":14400}
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Simulando Timeout, Internal Server Error e Delay de resposta
+Para Timeout basta executar a request post passando timeout através da query string, exemplo: https://frontend-challenge-7bu3nxh76a-uc.a.run.app?timeout
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Para Internal Server Error basta executar a request post passando internalError através da query string, exemplo: https://frontend-challenge-7bu3nxh76a-uc.a.run.app?internalError
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Para Delay de resposta, que pode ser usado como simulador de conexão lenta, basta executar a request post passando delay, e informando o tempo do delay em milissegundos, exemplo: https://frontend-challenge-7bu3nxh76a-uc.a.run.app?delay=tempoEmMilissegundos
 
-## Learn More
+Avaliação
+Sua performance será avaliada com base nos seguintes pontos:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+A aplicação funciona conforme o esperado.
+Os problemas foram resolvidos com eficiência.
+A aplicação é fornecida com comandos de instalação e execução para ambientes de desenvolvimento e de testes.
+Você demonstra conhecimento de como testar as partes críticas da aplicação. Não exigimos 100% de cobertura.
+A aplicação tem uma estrutura lógica e bem organizada.
+O teste acompanha documentação com o raciocínio sobre as decisões tomadas.
+O código está documentado e/ou é de fácil leitura.
+Segue algum guia de estilo de código padronizado.
+Possui um histórico do git (mesmo que breve) com mensagens claras e concisas.
