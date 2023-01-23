@@ -1,4 +1,12 @@
-Introdução
+<div style='background-color:white'>
+
+</div>
+<h1 style='color: #3d75bb'>Calculadora de Atencipação</h1>
+
+<p>Por favor, leia este documento do começo ao fim, com muita atenção. O intuito deste teste é avaliar seus conhecimentos técnicos com o front-end. </p>
+
+
+<p>Introdução
 
 Por favor, leia este documento do começo ao fim, com muita atenção. O intuito deste teste é avaliar seus conhecimentos técnicos com o front-end.
 
@@ -7,6 +15,8 @@ Primeiro, crie um repositório público no Github;
 Em seguida, implemente o projeto tal qual descrito abaixo, em seu clone local;
 Faça o push do seu projeto local para um repositório público no Github;
 Por fim, envie no canvas o link do repositório.
+</p>
+
 Objetivo
 O objetivo do desafio é validar seus conhecimentos nos seguintes tópicos:
 
