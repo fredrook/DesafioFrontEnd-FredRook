@@ -5,7 +5,6 @@ export interface IAuthContext {
   isRate: ICalc;
   setIsRating: (value: ICalc) => void;
   calculate: (data: ICalc) => void;
-  completeCalculate: (data: ICalc) => void;
   calc: ICalc;
   setCalc: Dispatch<SetStateAction<ICalc>>;
   isTrue: boolean;
